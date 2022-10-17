@@ -19,12 +19,20 @@ public class GuessNumber
 
     public void Greet()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("---Bem-vindo ao Guessing Game---");
+        Console.WriteLine("Para começar, tente adivinhar o número que eu pensei, entre -100 e 100!");
     }
 
     public void ChooseNumber()
     {
-        throw new NotImplementedException();     
+        bool isParsed;
+        int readGuess;
+        do
+        {
+            isParsed = int.TryParse(Console.ReadLine(), out readGuess);
+            if (isParsed && -100 < readGuess && readGuess< 100) userValue = readGuess;
+            else Console.WriteLine("Por favor, digite um número inteiro:");
+        } while (!isParsed || !(-100 < readGuess && readGuess< 100));    
     }
     
     public void RandomNumber()
