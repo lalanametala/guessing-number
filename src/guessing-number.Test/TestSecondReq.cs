@@ -14,26 +14,59 @@ public class TestSecondReq
     [InlineData(-100, 100)]
     public void TestRandomlyChooseANumber(int MinimumRange, int MaximumRange)
     {
-        throw new NotImplementedException();
+        GuessNumber instance = new();
+        instance.RandomNumber();
+        instance.randomValue.Should().BeGreaterThan(MinimumRange);
+        instance.randomValue.Should().BeLessThan(MaximumRange);
     }
 
     [Theory(DisplayName = "Deve comparar a entrada do usuário em um caso MENOR")]
     [InlineData(50, 0)]
     public void TestProgramComparisonValuesLess(int mockValue, int entry)
     {
-        throw new NotImplementedException();   
+        GuessNumber instance = new();
+        instance.randomValue = mockValue;
+        instance.userValue = entry;
+        string consoleResponse;
+        using(var stringWriter = new StringWriter())
+        {
+            Console.SetOut(stringWriter);
+            instance.AnalyzePlay();
+            consoleResponse = stringWriter.ToString().Trim();
+        }
+        consoleResponse.Should().Be("Tente um número MAIOR");   
     }
     [Theory(DisplayName = "Deve comparar a entrada do usuário em um caso MAIOR")]
     [InlineData(50, 60)]
     public void TestProgramComparisonValuesBigger(int mockValue, int entry)
     {
-        throw new NotImplementedException();  
+        GuessNumber instance = new();
+        instance.randomValue = mockValue;
+        instance.userValue = entry;
+        string consoleResponse;
+        using(var stringWriter = new StringWriter())
+        {
+            Console.SetOut(stringWriter);
+            instance.AnalyzePlay();
+            consoleResponse = stringWriter.ToString().Trim();
+        }
+        consoleResponse.Should().Be("Tente um número MENOR");  
     }
     
-    [Theory(DisplayName = "Deve comparar a entrada do usuário em um caso MAIOR")]
+    [Theory(DisplayName = "Deve comparar a entrada do usuário em um caso de acerto")]
     [InlineData(50, 50)]
     public void TestProgramComparisonValuesEqual(int mockValue, int entry)
     {
-        throw new NotImplementedException();
+        GuessNumber instance = new();
+        instance.randomValue = mockValue;
+        instance.userValue = entry;
+        string consoleResponse;
+        using(var stringWriter = new StringWriter())
+        {
+            Console.SetOut(stringWriter);
+            instance.AnalyzePlay();
+            consoleResponse = stringWriter.ToString().Trim();
+        }
+        consoleResponse.Should().Be("ACERTOU!");
     }    
 }
