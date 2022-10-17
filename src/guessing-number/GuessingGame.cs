@@ -37,11 +37,20 @@ public class GuessNumber
     
     public void RandomNumber()
     {
-        throw new NotImplementedException();
+        randomValue = random.GetInt(-100, 100);
     }
     
     public void AnalyzePlay()
     {
-        throw new NotImplementedException();
+        if (randomValue > userValue)
+        {
+            Console.WriteLine("Tente um número MAIOR");
+        } else if (randomValue < userValue)
+        {
+            Console.WriteLine("Tente um número MENOR");
+        } else
+        {
+            Console.WriteLine("ACERTOU!");
+        }
     }
 }
