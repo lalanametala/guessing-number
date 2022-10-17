@@ -24,9 +24,10 @@ public class TestSecondReq
     [InlineData(50, 0)]
     public void TestProgramComparisonValuesLess(int mockValue, int entry)
     {
-        GuessNumber instance = new();
-        instance.randomValue = mockValue;
-        instance.userValue = entry;
+        GuessNumber instance = new() {
+            randomValue = mockValue,
+            userValue = entry
+        };
         string consoleResponse;
         using(var stringWriter = new StringWriter())
         {
@@ -40,9 +41,10 @@ public class TestSecondReq
     [InlineData(50, 60)]
     public void TestProgramComparisonValuesBigger(int mockValue, int entry)
     {
-        GuessNumber instance = new();
-        instance.randomValue = mockValue;
-        instance.userValue = entry;
+        GuessNumber instance = new() {
+            randomValue = mockValue,
+            userValue = entry
+        };
         string consoleResponse;
         using(var stringWriter = new StringWriter())
         {
@@ -57,9 +59,10 @@ public class TestSecondReq
     [InlineData(50, 50)]
     public void TestProgramComparisonValuesEqual(int mockValue, int entry)
     {
-        GuessNumber instance = new();
-        instance.randomValue = mockValue;
-        instance.userValue = entry;
+        GuessNumber instance = new() {
+            randomValue = mockValue,
+            userValue = entry
+        };
         string consoleResponse;
         using(var stringWriter = new StringWriter())
         {
